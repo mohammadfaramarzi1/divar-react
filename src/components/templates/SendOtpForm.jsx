@@ -1,10 +1,22 @@
-import React from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import { sendOtp } from "../../services/auth";
 
 function SendOtpForm({ mobile, setMobile, setStep }) {
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
-    console.log("Submit");
-    if (mobile.length !== 11) return;
+    if (mobile.length !== 11) {
+      return toast("شماره ی موبایل خود را به صورت صحیح وارد کنید!", {
+        position: "top-right",
+        type: "warning",
+      });
+    }
+    const { response, error } = await sendOtp(mobile);
+    console.log({ response, error });
+    if (response) setStep(2);
+    if (error)
+      toast("با مشکل مواجه شدید!", { position: "top-right", type: "error" });
   };
 
   return (
@@ -23,6 +35,7 @@ function SendOtpForm({ mobile, setMobile, setStep }) {
         onChange={(e) => setMobile(e.target.value)}
       />
       <button type="submit">ارسال کد تایید</button>
+      <ToastContainer theme="colored" />
     </form>
   );
 }
