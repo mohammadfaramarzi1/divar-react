@@ -35,7 +35,7 @@ function SendOtpForm({ mobile, setMobile, setStep }) {
         onChange={(e) => setMobile(e.target.value)}
       />
       <button type="submit">ارسال کد تایید</button>
-      <ToastContainer theme="colored" />
+      <ToastContainer />
     </form>
   );
 }

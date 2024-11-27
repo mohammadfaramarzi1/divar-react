@@ -1,8 +1,26 @@
 import React from "react";
+import { toast, ToastContainer } from "react-toastify";
+import { checkOtp } from "../../services/auth";
 
 function CheckOtpForm({ code, setCode, mobile, setStep }) {
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
+    if (code.length !== 5) {
+      return toast("کد ارسال شده را وارد کنید!", {
+        position: "top-right",
+        type: "warning",
+      });
+    }
+    const { response, error } = await checkOtp(mobile, code);
+    console.log({ response, error });
+
+    if(response) {
+        
+    }
+
+    if (error) {
+      toast("کد وارد شده صحیح نیست!", { position: "top-right", type: "error" });
+    }
   };
 
   return (
@@ -18,7 +36,8 @@ function CheckOtpForm({ code, setCode, mobile, setStep }) {
         onChange={(e) => setCode(e.target.value)}
       />
       <button type="submit">ورود</button>
-      <button>تغییر شماره ی موبایل</button>
+      <button onClick={() => setStep(1)}>تغییر شماره ی موبایل</button>
+      <ToastContainer />
     </form>
   );
 }
