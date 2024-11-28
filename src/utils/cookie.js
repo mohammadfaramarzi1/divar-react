@@ -1,5 +1,5 @@
 const setCookie = (tokens) => {
-  document.cookie = `accesToken=${tokens.accessToken}; max-age=${
+  document.cookie = `accessToken=${tokens.accessToken}; max-age=${
     1 * 24 * 60 * 60
   };`;
   document.cookie = `refreshToken=${tokens.refreshToken}; max-age=${
@@ -7,4 +7,11 @@ const setCookie = (tokens) => {
   };`;
 };
 
-export { setCookie };
+const getCookie = (cookieName) => {
+  return document.cookie
+    .split(";")
+    .find((i) => i.split("=")[0] === cookieName)
+    ?.split("=")[1];
+};
+
+export { setCookie, getCookie };

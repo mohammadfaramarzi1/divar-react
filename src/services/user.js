@@ -1,5 +1,14 @@
 import api from "configs/api";
+import { getCookie } from "src/utils/cookie";
 
-const getProfile = () => api.get("user/whoami");
+const token = getCookie("accessToken");
+console.log("token", token);
+
+const getProfile = () =>
+  api.get("user/whoami", {
+    headers: {
+      Authorization: `bearer ${token}`,
+    },
+  });
 
 export { getProfile };
