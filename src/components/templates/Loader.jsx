@@ -1,9 +1,12 @@
-import React from 'react'
+import { TailSpin } from "react-loader-spinner";
+import styles from "./Loader.module.css";
 
 function Loader() {
   return (
-    <div>Loader</div>
-  )
+    <div className={styles.loader}>
+      <TailSpin color="#a62626" />
+    </div>
+  );
 }
 
-export default Loader
+export default Loader;

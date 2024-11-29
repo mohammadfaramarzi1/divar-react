@@ -6,11 +6,14 @@ import DashboardPage from "pages/DashboardPage";
 import AuthPage from "pages/AuthPage";
 import AdminPage from "pages/AdminPage";
 import PageNotFound from "pages/404";
+import Loader from "components/templates/Loader";
 import { getProfile } from "services/user";
 
 function Router() {
   const { data, isLoading, error } = useQuery(["profile"], getProfile);
   console.log({ data, isLoading });
+
+  if(data) return <Loader />
 
   return (
     <Routes>
