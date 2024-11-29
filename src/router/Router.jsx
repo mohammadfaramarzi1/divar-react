@@ -6,7 +6,7 @@ import DashboardPage from "pages/DashboardPage";
 import AuthPage from "pages/AuthPage";
 import AdminPage from "pages/AdminPage";
 import PageNotFound from "pages/404";
-import Loader from "components/templates/Loader";
+import Loader from "components/modules/Loader";
 import { getProfile } from "services/user";
 
 function Router() {
