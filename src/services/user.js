@@ -5,10 +5,6 @@ const token = getCookie("accessToken");
 console.log("token", token);
 
 const getProfile = () =>
-  api.get("user/whoami", {
-    headers: {
-      Authorization: `bearer ${token}`,
-    },
-  });
+  api.get("user/whoami");
 
 export { getProfile };
