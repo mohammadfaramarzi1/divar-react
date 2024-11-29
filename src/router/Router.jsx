@@ -7,13 +7,10 @@ import AuthPage from "pages/AuthPage";
 import AdminPage from "pages/AdminPage";
 import PageNotFound from "pages/404";
 import { getProfile } from "services/user";
-import { getCookie } from "src/utils/cookie";
 
 function Router() {
   const { data, isLoading, error } = useQuery(["profile"], getProfile);
   console.log({ data, isLoading });
-
-  
 
   return (
     <Routes>
