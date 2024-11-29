@@ -21,4 +21,17 @@ api.interceptors.request.use(
   }
 );
 
+api.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (error) => {
+    const originalRequest = error.config;
+    console.log({ originalRequest, error });
+    if (error.response.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+    }
+  }
+);
+
 export default api;
