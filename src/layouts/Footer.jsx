@@ -1,3 +1,5 @@
+import styles from "layouts/Footer.module.css"
+
 function Footer() {
   return (
     <footer>
