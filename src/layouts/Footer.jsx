@@ -2,7 +2,7 @@ import styles from "layouts/Footer.module.css"
 
 function Footer() {
   return (
-    <footer>
+    <footer className={styles.footer}>
       <p>Developed By Mohammad Faramarzi With ❤️</p>
     </footer>
   )
