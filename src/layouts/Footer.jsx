@@ -1,6 +1,8 @@
 function Footer() {
   return (
-    <div>Footer</div>
+    <footer>
+      <p>Developed By Mohammad Faramarzi With ❤️</p>
+    </footer>
   )
 }
 
