@@ -29,7 +29,7 @@ function Router() {
       <Route
         path="/admin"
         element={
-          data && data.data.role === "ADMIN" ? (
+          data && data.data.role === "USER" ? (
             <AdminPage />
           ) : (
             <Navigate to="/" />
