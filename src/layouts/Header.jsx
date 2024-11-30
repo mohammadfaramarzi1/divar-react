@@ -4,10 +4,10 @@ import styles from "layouts/Header.module.css"
 
 function Header() {
   return (
-    <header>
+    <header className={styles.header}>
       <div>
         <Link to="/">
-          <img src="divar.svg" alt="divar" />
+          <img src="divar.svg" alt="divar" className={styles.logo} />
         </Link>
         <span>
           <img src="location.svg" alt="location" />
@@ -21,7 +21,7 @@ function Header() {
             <p>دیوار من</p>
           </span>
         </Link>
-        <Link to="/dashboard">ثبت آگهی</Link>
+        <Link to="/dashboard" className={styles.button}>ثبت آگهی</Link>
       </div>
     </header>
   );
