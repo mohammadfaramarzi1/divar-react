@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useMutation } from "@tanstack/react-query";
 
 import styles from "components/templates/CategoryForm.module.css"
 
@@ -8,6 +9,8 @@ function CategoryForm() {
     slug: "",
     icon: "",
   });
+
+  const {mutate, isLoading, error} = useMutation()
 
   const changeHandler = (event) => {
     setForm({ ...form, [event.target.name]: event.target.value });
