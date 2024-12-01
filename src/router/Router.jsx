@@ -11,7 +11,6 @@ import { getProfile } from "services/user";
 
 function Router() {
   const { data, isLoading, error } = useQuery(["profile"], getProfile);
-  console.log({ data, isLoading });
 
   if (isLoading) return <Loader />;
 

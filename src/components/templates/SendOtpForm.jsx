@@ -1,8 +1,8 @@
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 import { sendOtp } from "services/auth";
 
+import "react-toastify/dist/ReactToastify.css";
 import styles from "./SendOtpForm.module.css"
 
 function SendOtpForm({ mobile, setMobile, setStep }) {
