@@ -46,14 +46,12 @@ function CategoryForm() {
       className={styles.form}
     >
       <h3>دسته بندی جدید</h3>
-      {/* <p></p> */}
       <label htmlFor="name">نام دسته بندی</label>
       <input
         type="text"
         name="name"
         id="name"
         placeholder="نام"
-        value={form.name}
       />
       <label htmlFor="slug">اسلاگ دسته بندی</label>
       <input
@@ -61,7 +59,6 @@ function CategoryForm() {
         name="slug"
         id="slug"
         placeholder="اسلاگ"
-        value={form.slug}
       />
       <label htmlFor="icon">آیکون دسته بندی</label>
       <input
@@ -69,9 +66,8 @@ function CategoryForm() {
         name="icon"
         id="icon"
         placeholder="آیکون"
-        value={form.icon}
       />
-      <button type="submit" disabled={isLoading}>ایجاد</button>
+      <button type="submit">ایجاد</button>
       {data?.status === 201 &&
         toast("دسته بندی جدید با موفقیت ساخته شد.", {
           position: "top-right",
