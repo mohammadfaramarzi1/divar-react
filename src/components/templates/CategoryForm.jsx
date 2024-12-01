@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 
-import styles from "components/templates/CategoryForm.module.css"
+import { addCategory } from "services/admin";
+
+import styles from "components/templates/CategoryForm.module.css";
 
 function CategoryForm() {
   const [form, setForm] = useState({
@@ -10,7 +12,7 @@ function CategoryForm() {
     icon: "",
   });
 
-  const {mutate, isLoading, error} = useMutation()
+  const { mutate, isLoading, error } = useMutation(addCategory);
 
   const changeHandler = (event) => {
     setForm({ ...form, [event.target.name]: event.target.value });
@@ -22,7 +24,11 @@ function CategoryForm() {
   };
 
   return (
-    <form onChange={changeHandler} onSubmit={submitHandler} className={styles.form}>
+    <form
+      onChange={changeHandler}
+      onSubmit={submitHandler}
+      className={styles.form}
+    >
       <h3>دسته بندی جدید</h3>
       {/* <p></p> */}
       <label htmlFor="name">نام دسته بندی</label>
