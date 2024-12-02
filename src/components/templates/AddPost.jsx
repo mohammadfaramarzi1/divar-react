@@ -1,11 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import axios from "axios";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 
 import { getCookie } from "utils/cookie";
 import { getCategories } from "services/admin";
 
+import "react-toastify/dist/ReactToastify.css";
 import styles from "./AddPost.module.css";
 
 function AddPost() {
@@ -33,12 +34,20 @@ function AddPost() {
           Authorization: `bearer ${token}`,
         },
       })
-      .then((res) =>
+      .then((res) => {
         toast("پست جدید با موفقیت ایجاد شد.", {
           position: "top-right",
           type: "success",
-        })
-      )
+        });
+        setForm({
+          title: "",
+          content: "",
+          amount: null,
+          city: "",
+          category: "",
+          iamges: null,
+        });
+      })
       .catch((error) =>
         toast("پست جدید با موفقیت ایجاد نشد.", {
           position: "top-right",
@@ -78,7 +87,6 @@ function AddPost() {
       <label htmlFor="images">عکس آگهی را وارد کنید</label>
       <input type="file" id="images" placeholder="عکس" name="images" />
       <button onClick={addHandler}>ایجاد پست</button>
-      <ToastContainer />
     </form>
   );
 }

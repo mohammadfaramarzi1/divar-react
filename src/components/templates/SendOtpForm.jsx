@@ -1,9 +1,9 @@
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 import { sendOtp } from "services/auth";
 
 import "react-toastify/dist/ReactToastify.css";
-import styles from "./SendOtpForm.module.css"
+import styles from "./SendOtpForm.module.css";
 
 function SendOtpForm({ mobile, setMobile, setStep }) {
   const submitHandler = async (event) => {
@@ -37,7 +37,6 @@ function SendOtpForm({ mobile, setMobile, setStep }) {
         onChange={(e) => setMobile(e.target.value)}
       />
       <button type="submit">ارسال کد تایید</button>
-      <ToastContainer />
     </form>
   );
 }

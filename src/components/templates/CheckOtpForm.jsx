@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 
 import { checkOtp } from "services/auth";
 import { getProfile } from "services/user";
 import { setCookie } from "utils/cookie";
 
-import styles from "./CheckOtpForm.module.css"
+import styles from "./CheckOtpForm.module.css";
 
 function CheckOtpForm({ code, setCode, mobile, setStep }) {
   const navigate = useNavigate();
@@ -47,8 +47,9 @@ function CheckOtpForm({ code, setCode, mobile, setStep }) {
         onChange={(e) => setCode(e.target.value)}
       />
       <button type="submit">ورود</button>
-      <button onClick={() => setStep(1)} className={styles.backButton}>تغییر شماره ی موبایل</button>
-      <ToastContainer />
+      <button onClick={() => setStep(1)} className={styles.backButton}>
+        تغییر شماره ی موبایل
+      </button>
     </form>
   );
 }

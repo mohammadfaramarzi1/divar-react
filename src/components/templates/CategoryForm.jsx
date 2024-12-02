@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 import { addCategory } from "services/admin";
 
@@ -56,13 +56,14 @@ function CategoryForm() {
       <input type="text" name="slug" id="slug" placeholder="اسلاگ" />
       <label htmlFor="icon">آیکون دسته بندی</label>
       <input type="text" name="icon" id="icon" placeholder="آیکون" />
-      <button type="submit" disabled={isLoading}>ایجاد</button>
+      <button type="submit" disabled={isLoading}>
+        ایجاد
+      </button>
       {data?.status === 201 &&
         toast("دسته بندی جدید با موفقیت ساخته شد.", {
           position: "top-right",
           type: "success",
         })}
-      <ToastContainer />
     </form>
   );
 }
