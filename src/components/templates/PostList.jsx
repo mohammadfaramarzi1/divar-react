@@ -5,9 +5,9 @@ import { getMyPosts } from "services/user";
 import styles from "./PostList.module.css";
 
 function PostList() {
-//   const { data, isLoading, error } = useQuery(["my-post-list"], getMyPosts);
+  const { data, isLoading, error } = useQuery(["my-post-list"], getMyPosts);
 
-//   console.log({data, isLoading, error})
+  console.log({data, isLoading, error})
 
   return <div>
     <h3>آگهی های شما</h3>
