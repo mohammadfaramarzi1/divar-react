@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import Loader from "../modules/Loader";
 import { getMyPosts } from "services/user";
+import { sp } from "utils/numbers";
 
 import styles from "./PostList.module.css";
 
@@ -25,7 +26,7 @@ function PostList() {
                             </div>
                             <div>
                                 <p>{new Date(post.createdAt).toLocaleDateString("fa-IR")}</p>
-                                <span>{post.amount} تومان</span>
+                                <span>{sp(post.amount)} تومان</span>
                             </div>
                         </div>
                     ))
