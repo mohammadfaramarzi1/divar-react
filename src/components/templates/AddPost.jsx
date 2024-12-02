@@ -1,9 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
 
+import { getCookie } from "utils/cookie";
 import { getCategories } from "services/admin";
 
-import styles from "./AddPost.module.css"
+import styles from "./AddPost.module.css";
 
 function AddPost() {
   const [form, setForm] = useState({
@@ -18,6 +21,30 @@ function AddPost() {
 
   const addHandler = (event) => {
     event.preventDefault();
+    const formData = new FormData();
+    for (const i in form) {
+      formData.append(i, form[i]);
+    }
+    const token = getCookie("accessToken");
+    axios
+      .post(`${import.meta.env.VITE_BASE_URL}post/create`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `bearer ${token}`,
+        },
+      })
+      .then((res) =>
+        toast("پست جدید با موفقیت ایجاد شد.", {
+          position: "top-right",
+          type: "success",
+        })
+      )
+      .catch((error) =>
+        toast("پست جدید با موفقیت ایجاد نشد.", {
+          position: "top-right",
+          type: "error",
+        })
+      );
   };
 
   const changeHandler = (event) => {
@@ -51,6 +78,7 @@ function AddPost() {
       <label htmlFor="images">عکس آگهی را وارد کنید</label>
       <input type="file" id="images" placeholder="عکس" name="images" />
       <button onClick={addHandler}>ایجاد پست</button>
+      <ToastContainer />
     </form>
   );
 }
