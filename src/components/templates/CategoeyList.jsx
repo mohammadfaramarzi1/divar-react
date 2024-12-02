@@ -19,6 +19,7 @@ function CategoeyList() {
                 <div key={category._id}>
                     <img src={`${category.icon}.svg`} alt="icon" />
                     <h5>{category.name}</h5>
+                    <button>حذف دسته بندی</button>
                     <p>اسلاگ: {category.slug}</p>
                 </div>
             ))
