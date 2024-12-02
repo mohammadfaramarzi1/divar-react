@@ -1,16 +1,34 @@
 import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 
 import { getCategories } from "services/admin";
 
 function AddPost() {
+  const [form, setForm] = useState({
+    title: "",
+    content: "",
+    amount: null,
+    city: "",
+    category: "",
+    iamges: null,
+  });
   const { data } = useQuery(["get-categories"], getCategories);
 
   const addHandler = (event) => {
     event.preventDefault();
   };
 
+  const changeHandler = (event) => {
+    const name = event.target.name;
+    if (name !== "images") {
+      setForm({ ...form, [name]: event.target.value });
+    } else {
+      setForm({ ...form, [name]: event.target.files[0] });
+    }
+  };
+
   return (
-    <form>
+    <form onChange={changeHandler}>
       <h3>افرودن آگهی</h3>
       <label htmlFor="title">عنوان آگهی را وارد کنید</label>
       <input type="text" id="title" placeholder="عنوان" name="title" />
