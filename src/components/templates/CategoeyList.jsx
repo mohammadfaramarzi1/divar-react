@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import Loader from "../modules/Loader";
 import { deleteCategory, getCategories } from "services/admin";
@@ -8,13 +8,16 @@ import "react-toastify/dist/ReactToastify.css";
 import styles from "./CategoryList.module.css";
 
 function CategoeyList() {
-  const { data, isLoading, error, refetch } = useQuery(
+  const queryClient = useQueryClient();
+
+  const { data, isLoading } = useQuery(
     ["get-categories"],
     getCategories
   );
-  console.log({ data, isLoading, error });
 
-  const { mutate } = useMutation(deleteCategory);
+  const { mutate } = useMutation(deleteCategory, {
+    onSuccess: () => queryClient.invalidateQueries("get-categories"),
+  });
 
   return (
     <div className={styles.list}>
@@ -32,7 +35,6 @@ function CategoeyList() {
                   position: "top-right",
                   type: "success",
                 });
-                refetch();
               }}
             >
               حذف دسته بندی
