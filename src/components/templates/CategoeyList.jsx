@@ -10,10 +10,7 @@ import styles from "./CategoryList.module.css";
 function CategoeyList() {
   const queryClient = useQueryClient();
 
-  const { data, isLoading } = useQuery(
-    ["get-categories"],
-    getCategories
-  );
+  const { data, isLoading } = useQuery(["get-categories"], getCategories);
 
   const { mutate } = useMutation(deleteCategory, {
     onSuccess: () => queryClient.invalidateQueries("get-categories"),
