@@ -24,7 +24,7 @@ function PostList() {
                                 <span>{post.options.content}</span>
                             </div>
                             <div>
-                                <p>{post.createdAt}</p>
+                                <p>{new Date(post.createdAt).toLocaleDateString("fa-IR")}</p>
                                 <span>{post.amount} تومان</span>
                             </div>
                         </div>
