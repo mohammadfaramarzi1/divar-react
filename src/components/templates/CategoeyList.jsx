@@ -1,7 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { getCategories } from "services/admin";
 import Loader from "../modules/Loader";
+import { getCategories } from "services/admin";
+
+import styles from "./CategoryList.module.css";
 
 function CategoeyList() {
   const { data, isLoading, error } = useQuery(
@@ -10,7 +12,7 @@ function CategoeyList() {
   );
   console.log({ data, isLoading, error });
 
-  return <div>
+  return <div className={styles.list}>
     {
         isLoading ? <Loader /> : 
             data.data.map(category => (
