@@ -16,7 +16,7 @@ const getCookie = (cookieName) => {
 
 const removeCookie = () => {
   document.cookie = `accessToken=; path=/; max-age=0`;
-  document.cookie = `refreshTokenToken=; path=/; max-age=0`;
+  document.cookie = `refreshToken=; path=/; max-age=0`;
 };
 
 export { setCookie, getCookie, removeCookie };
