@@ -8,12 +8,13 @@ import { removeCookie } from "src/utils/cookie";
 
 function Header() {
   const navigate = useNavigate();
-  const { refetch } = useQuery(["profile"], getProfile);
+  const { refetch, data } = useQuery(["profile"], getProfile);
+  console.log(data);
 
   const clickHandler = () => {
     removeCookie();
     navigate("/");
-    refetch()
+    refetch();
   };
 
   return (
@@ -31,12 +32,14 @@ function Header() {
         <Link to="/auth">
           <span>
             <img src="profile.svg" alt="profile" />
-            <p>دیوار من</p>
+            {data?.data ? <p>دیوار من</p> : <p>ورود به حساب کاربری</p>}
           </span>
         </Link>
-        <button className={styles.exit} onClick={clickHandler}>
-          خروج از حساب کاربری
-        </button>
+        {data?.data && (
+          <button className={styles.exit} onClick={clickHandler}>
+            خروج از حساب کاربری
+          </button>
+        )}
         <Link to="/dashboard" className={styles.button}>
           ثبت آگهی
         </Link>
