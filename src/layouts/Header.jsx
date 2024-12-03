@@ -3,6 +3,11 @@ import { Link } from "react-router-dom";
 import styles from "layouts/Header.module.css"
 
 function Header() {
+
+  const clickHandler = () => {
+    
+  }
+
   return (
     <header className={styles.header}>
       <div>
@@ -21,7 +26,7 @@ function Header() {
             <p>دیوار من</p>
           </span>
         </Link>
-        <button className={styles.exit}>خروج از حساب کاربری</button>
+        <button className={styles.exit} onClick={clickHandler}>خروج از حساب کاربری</button>
         <Link to="/dashboard" className={styles.button}>ثبت آگهی</Link>
       </div>
     </header>
