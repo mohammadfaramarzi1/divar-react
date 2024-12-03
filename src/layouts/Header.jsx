@@ -21,6 +21,7 @@ function Header() {
             <p>دیوار من</p>
           </span>
         </Link>
+        <button className={styles.exit}>خروج از حساب کاربری</button>
         <Link to="/dashboard" className={styles.button}>ثبت آگهی</Link>
       </div>
     </header>
