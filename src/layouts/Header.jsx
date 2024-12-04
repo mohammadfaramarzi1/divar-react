@@ -9,7 +9,6 @@ import { removeCookie } from "src/utils/cookie";
 function Header() {
   const navigate = useNavigate();
   const { refetch, data } = useQuery(["profile"], getProfile);
-  console.log(data);
 
   const clickHandler = () => {
     removeCookie();
