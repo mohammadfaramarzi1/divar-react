@@ -1,5 +1,4 @@
-import React from "react";
-import PostDetail from "src/components/templates/PostDetail";
+import PostDetail from "components/templates/PostDetail";
 
 function PostDetailPage() {
   return (

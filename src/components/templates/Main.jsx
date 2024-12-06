@@ -7,12 +7,11 @@ import styles from "./Main.module.css";
 function Main({ posts }) {
   const BASE_URL = import.meta.env.VITE_BASE_URL;
 
-  console.log({ posts });
   return (
     <div className={styles.container}>
       {posts.data.posts.map((post) => (
-        <Link>
-          <div key={post._id} className={styles.card}>
+        <Link to={`/post/${post._id}`} key={post._id}>
+          <div className={styles.card}>
             <div className={styles.info}>
               <p>{post.options.title}</p>
               <div>
