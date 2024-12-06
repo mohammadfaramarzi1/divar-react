@@ -6,10 +6,13 @@ import styles from "./Main.module.css";
 
 function Main({ posts }) {
   const BASE_URL = import.meta.env.VITE_BASE_URL;
+  console.log("3", posts);
+
+  if (!posts.length) return <p>پستی برای این دسته بندی وجود ندارد.😑</p>;
 
   return (
     <div className={styles.container}>
-      {posts.data.posts.map((post) => (
+      {posts.map((post) => (
         <Link to={`/post/${post._id}`} key={post._id}>
           <div className={styles.card}>
             <div className={styles.info}>

@@ -1,14 +1,17 @@
-import { useQuery } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 
 import Main from "components/templates/Main";
 import Sidebar from "components/templates/Sidebar";
 import Loader from "components/modules/Loader";
 import { getAllPosts } from "services/user";
 import { getCategories } from "services/admin";
-import filterPostByCategory from "src/utils/category";
+import filterPostByCategory from "utils/category";
 
 function HomePage() {
+  const [hasCategory, setHasCategory] = useState(false);
+  const [filteredPosts, setFilteredPosts] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const { data: posts, isLoading: isLoadingPost } = useQuery(
@@ -20,12 +23,12 @@ function HomePage() {
     getCategories
   );
 
-  let filteredPosts = posts;
+  useEffect(() => {}, []);
 
   const categoryHandler = (categoryId) => {
     setSearchParams({ categoryId });
-    filteredPosts = filterPostByCategory(posts, categoryId);
-    console.log("FilterdPosts", fiteredPosts);
+    setFilteredPosts(filterPostByCategory(posts, categoryId));
+    setHasCategory(true);
   };
 
   return (
@@ -35,7 +38,7 @@ function HomePage() {
       ) : (
         <div style={{ display: "flex" }}>
           <Sidebar categories={categories} categoryHandler={categoryHandler} />
-          <Main posts={filteredPosts} />
+          <Main posts={hasCategory ? filteredPosts : posts} />
         </div>
       )}
     </>
