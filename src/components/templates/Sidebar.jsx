@@ -1,13 +1,7 @@
-import { useSearchParams } from "react-router-dom";
 import styles from "./Sidebar.module.css";
 
-function Sidebar({ categories }) {
-  const [searchParams, setSearchParams] = useSearchParams();
-  console.log({ searchParams, setSearchParams });
-
-  const categoryHandler = (categoryId) => {
-    setSearchParams({ categoryId });
-  };
+function Sidebar({ categories, categoryHandler }) {
+  
 
   return (
     <div className={styles.sidebar}>
