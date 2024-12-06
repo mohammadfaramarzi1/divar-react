@@ -7,6 +7,8 @@ import AuthPage from "pages/AuthPage";
 import AdminPage from "pages/AdminPage";
 import PageNotFound from "pages/404";
 import Loader from "components/modules/Loader";
+import PostDetailPage from "pages/PostDetailPage";
+
 import { getProfile } from "services/user";
 
 function Router() {
@@ -16,8 +18,8 @@ function Router() {
 
   return (
     <Routes>
+      <Route path="/post/:id" element={<PostDetailPage />} />
       <Route index element={<HomePage />} />
-      <Route path="/post/:id" element={<PostDetail />} />
       <Route
         path="/dashboard"
         element={data ? <DashboardPage /> : <Navigate to="/auth" />}
