@@ -17,6 +17,7 @@ function Router() {
   return (
     <Routes>
       <Route index element={<HomePage />} />
+      <Route path="/post/:id" element={<PostDetail />} />
       <Route
         path="/dashboard"
         element={data ? <DashboardPage /> : <Navigate to="/auth" />}
