@@ -1,6 +1,8 @@
-const filterPostByCategory = (posts, categoryId) => {
+const filterPostByCategory = (posts, category) => {
+  if (!category) return posts;
+
   const filteredPosts = posts.data.posts.filter(
-    (post) => post.category === categoryId
+    (post) => post.category === category
   );
   return filteredPosts;
 };

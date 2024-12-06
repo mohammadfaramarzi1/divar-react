@@ -10,25 +10,33 @@ import { getCategories } from "services/admin";
 import filterPostByCategory from "utils/category";
 
 function HomePage() {
-  const [hasCategory, setHasCategory] = useState(false);
-  const [filteredPosts, setFilteredPosts] = useState([]);
-  const [searchParams, setSearchParams] = useSearchParams();
-
   const { data: posts, isLoading: isLoadingPost } = useQuery(
     ["post-list"],
     getAllPosts
   );
+
   const { data: categories, isLoading: isLoadingCategory } = useQuery(
     ["get-categories"],
     getCategories
   );
 
-  useEffect(() => {}, []);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [filteredPosts, setFilteredPosts] = useState([]);
+  const [query, setQuery] = useState({});
+
+  useEffect(() => {
+    setFilteredPosts(posts);
+  }, [posts]);
+
+  useEffect(() => {
+    let filterPosts = filterPostByCategory(posts, query.category);
+    console.log(filterPosts);
+    setFilteredPosts(filterPosts);
+  }, [query]);
 
   const categoryHandler = (categoryId) => {
+    setQuery({ category: categoryId });
     setSearchParams({ categoryId });
-    setFilteredPosts(filterPostByCategory(posts, categoryId));
-    setHasCategory(true);
   };
 
   return (
@@ -36,9 +44,9 @@ function HomePage() {
       {isLoadingCategory || isLoadingPost ? (
         <Loader />
       ) : (
-        <div style={{ display: "flex" }}>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
           <Sidebar categories={categories} categoryHandler={categoryHandler} />
-          <Main posts={hasCategory ? filteredPosts : posts} />
+          <Main posts={filteredPosts} />
         </div>
       )}
     </>

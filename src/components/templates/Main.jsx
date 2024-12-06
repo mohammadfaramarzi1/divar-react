@@ -6,13 +6,17 @@ import styles from "./Main.module.css";
 
 function Main({ posts }) {
   const BASE_URL = import.meta.env.VITE_BASE_URL;
-  console.log("3", posts);
 
-  if (!posts.length) return <p>پستی برای این دسته بندی وجود ندارد.😑</p>;
+  const postsAccess = posts.data ? posts.data.posts : posts;
+
+  if (!postsAccess.length)
+    return (
+      <p className={styles.nopost}>هیچ پستی برای این دسته بندی وجود ندارد.</p>
+    );
 
   return (
     <div className={styles.container}>
-      {posts.map((post) => (
+      {postsAccess.map((post) => (
         <Link to={`/post/${post._id}`} key={post._id}>
           <div className={styles.card}>
             <div className={styles.info}>
