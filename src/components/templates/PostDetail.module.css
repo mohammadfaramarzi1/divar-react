@@ -1,0 +1,28 @@
+.post {
+    margin-top: 50px;
+}
+
+.post h2 {
+    font-size: 40px;
+    color: #a14242;
+}
+
+.post span {
+    display: block;
+    font-size: 25px;
+    margin: 20px 0;
+}
+
+.post p {
+    font-size: 22px;
+}
+
+.post img {
+    width: 600px;
+    height: 600px;
+    margin: 20px 0;
+}
+
+.post h3 {
+    font-size: 20px;
+}

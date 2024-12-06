@@ -28,7 +28,7 @@ function PostDetail() {
           <h2>{mainPost.options.title}</h2>
           <span>شهر: {mainPost.options.city}</span>
           <p>{mainPost.options.content || mainPost.content}</p>
-          <img src={`${BASE_URL}${mainPost.images[0]}`} alt="" />
+          <img src={`${BASE_URL}${mainPost.images[0]}`} alt="post banner" />
           <h3>قیمت: {sp(mainPost.amount)} تومان</h3>
         </div>
       )}
